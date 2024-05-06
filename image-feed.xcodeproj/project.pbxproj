@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		6FB011742BE7892D0079A71F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB011732BE7892D0079A71F /* AppDelegate.swift */; };
 		6FB011762BE7892D0079A71F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB011752BE7892D0079A71F /* SceneDelegate.swift */; };
-		6FB011782BE7892D0079A71F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB011772BE7892D0079A71F /* ViewController.swift */; };
+		6FB011782BE7892D0079A71F /* ImagesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB011772BE7892D0079A71F /* ImagesListViewController.swift */; };
 		6FB0117B2BE7892D0079A71F /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 6FB0117A2BE7892D0079A71F /* Base */; };
 		6FB0117D2BE7892F0079A71F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FB0117C2BE7892F0079A71F /* Assets.xcassets */; };
 		6FB011802BE7892F0079A71F /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 6FB0117F2BE7892F0079A71F /* Base */; };
+		6FB0118A2BE7CE8B0079A71F /* ImagesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB011892BE7CE8B0079A71F /* ImagesListCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6FB011702BE7892D0079A71F /* image-feed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "image-feed.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FB011732BE7892D0079A71F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6FB011752BE7892D0079A71F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		6FB011772BE7892D0079A71F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6FB011772BE7892D0079A71F /* ImagesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesListViewController.swift; sourceTree = "<group>"; };
 		6FB0117A2BE7892D0079A71F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6FB0117C2BE7892F0079A71F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6FB0117F2BE7892F0079A71F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6FB011812BE7892F0079A71F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6FB011892BE7CE8B0079A71F /* ImagesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +60,22 @@
 			children = (
 				6FB011732BE7892D0079A71F /* AppDelegate.swift */,
 				6FB011752BE7892D0079A71F /* SceneDelegate.swift */,
-				6FB011772BE7892D0079A71F /* ViewController.swift */,
+				6FB0118B2BE7CEA00079A71F /* ImagesList */,
 				6FB011792BE7892D0079A71F /* Main.storyboard */,
 				6FB0117C2BE7892F0079A71F /* Assets.xcassets */,
 				6FB0117E2BE7892F0079A71F /* LaunchScreen.storyboard */,
 				6FB011812BE7892F0079A71F /* Info.plist */,
 			);
 			path = "image-feed";
+			sourceTree = "<group>";
+		};
+		6FB0118B2BE7CEA00079A71F /* ImagesList */ = {
+			isa = PBXGroup;
+			children = (
+				6FB011772BE7892D0079A71F /* ImagesListViewController.swift */,
+				6FB011892BE7CE8B0079A71F /* ImagesListCell.swift */,
+			);
+			path = ImagesList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +149,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6FB011782BE7892D0079A71F /* ViewController.swift in Sources */,
+				6FB011782BE7892D0079A71F /* ImagesListViewController.swift in Sources */,
+				6FB0118A2BE7CE8B0079A71F /* ImagesListCell.swift in Sources */,
 				6FB011742BE7892D0079A71F /* AppDelegate.swift in Sources */,
 				6FB011762BE7892D0079A71F /* SceneDelegate.swift in Sources */,
 			);
