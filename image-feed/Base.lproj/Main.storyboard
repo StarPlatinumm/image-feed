@@ -30,7 +30,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="Hes-tX-cqf" userLabel="Cell Image">
-                                                    <rect key="frame" x="20" y="11" width="353" height="430"/>
+                                                    <rect key="frame" x="16" y="4" width="361" height="444"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                             <integer key="value" value="16"/>
@@ -39,13 +39,13 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="27 августа 2022" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aHq-3T-2nZ" userLabel="Date Label">
-                                                    <rect key="frame" x="28.000000000000007" y="417.33333333333331" width="101.66666666666669" height="15.666666666666686"/>
+                                                    <rect key="frame" x="24.000000000000007" y="424.33333333333331" width="101.66666666666669" height="15.666666666666686"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" name="YP White"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y6U-Wq-BBr" userLabel="Like Button">
-                                                    <rect key="frame" x="329" y="11" width="44" height="44"/>
+                                                    <rect key="frame" x="333" y="4" width="44" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="fTn-xO-zEx"/>
                                                         <constraint firstAttribute="width" constant="44" id="qTb-3N-mZx"/>
@@ -55,14 +55,14 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Hes-tX-cqf" firstAttribute="leading" secondItem="DXF-QO-FVW" secondAttribute="leadingMargin" id="Drt-xn-A9W"/>
+                                                <constraint firstItem="Hes-tX-cqf" firstAttribute="leading" secondItem="DXF-QO-FVW" secondAttribute="leading" constant="16" id="Drt-xn-A9W"/>
                                                 <constraint firstItem="y6U-Wq-BBr" firstAttribute="trailing" secondItem="Hes-tX-cqf" secondAttribute="trailing" id="FTh-G2-oTh"/>
-                                                <constraint firstItem="Hes-tX-cqf" firstAttribute="trailing" secondItem="DXF-QO-FVW" secondAttribute="trailingMargin" id="Frf-ce-rPO"/>
-                                                <constraint firstItem="Hes-tX-cqf" firstAttribute="top" secondItem="DXF-QO-FVW" secondAttribute="topMargin" id="Lry-9F-JIm"/>
+                                                <constraint firstItem="Hes-tX-cqf" firstAttribute="trailing" secondItem="DXF-QO-FVW" secondAttribute="trailing" constant="-16" id="Frf-ce-rPO"/>
+                                                <constraint firstItem="Hes-tX-cqf" firstAttribute="top" secondItem="DXF-QO-FVW" secondAttribute="top" constant="4" id="Lry-9F-JIm"/>
                                                 <constraint firstItem="y6U-Wq-BBr" firstAttribute="top" secondItem="Hes-tX-cqf" secondAttribute="top" id="QJi-81-jKV"/>
                                                 <constraint firstItem="aHq-3T-2nZ" firstAttribute="leading" secondItem="Hes-tX-cqf" secondAttribute="leading" constant="8" id="bxC-iG-9TP"/>
                                                 <constraint firstItem="aHq-3T-2nZ" firstAttribute="bottom" secondItem="Hes-tX-cqf" secondAttribute="bottom" constant="-8" id="cCS-Yl-nQP"/>
-                                                <constraint firstItem="Hes-tX-cqf" firstAttribute="bottom" secondItem="DXF-QO-FVW" secondAttribute="bottomMargin" id="mTP-wK-h3s"/>
+                                                <constraint firstItem="Hes-tX-cqf" firstAttribute="bottom" secondItem="DXF-QO-FVW" secondAttribute="bottom" constant="-4" id="mTP-wK-h3s"/>
                                                 <constraint firstItem="aHq-3T-2nZ" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Hes-tX-cqf" secondAttribute="trailing" constant="-8" id="rAa-Lz-72i"/>
                                             </constraints>
                                         </tableViewCellContentView>

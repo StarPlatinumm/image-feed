@@ -35,8 +35,10 @@ class ImagesListViewController: UIViewController {
         
         // градиент
         let gradientLayer = CAGradientLayer() // создаём слой градиента
-        gradientLayer.frame = CGRect(x: 0, y: cell.frame.height - 50, width: cell.mainImageView.bounds.width, height: 30) // настраиваем положение слоя
-        gradientLayer.colors = [UIColor.clear.cgColor, UIColor.black.withAlphaComponent(0.5).cgColor] // настраиваем цвета слоя
+        let gradientHeight = 30.0
+        let marginTopAndBottom = 8.0
+        gradientLayer.frame = CGRect(x: 0, y: cell.frame.height - gradientHeight - marginTopAndBottom, width: cell.mainImageView.bounds.width, height: gradientHeight) // настраиваем положение слоя
+        gradientLayer.colors = [UIColor.clear.cgColor, UIColor.ypBlack.withAlphaComponent(0.2).cgColor] // настраиваем цвета слоя
         gradientLayer.locations = [0.0, 1.0]
         cell.mainImageView.layer.sublayers?.forEach { $0.removeFromSuperlayer() } // чистим слои
         cell.mainImageView.layer.addSublayer(gradientLayer) // добавляем слой градиента к изображению
