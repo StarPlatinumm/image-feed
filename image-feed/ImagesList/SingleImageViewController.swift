@@ -10,6 +10,10 @@ final class SingleImageViewController: UIViewController {
     
     @IBOutlet private weak var imageView: UIImageView!
     
+    @IBAction private func didTapBackButton() {
+        dismiss(animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
