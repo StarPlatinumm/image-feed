@@ -43,6 +43,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6F8BFD2A2C02455400EB2D15 /* SingleImage */ = {
+			isa = PBXGroup;
+			children = (
+				6FB343922BFA5B5F00FBACC1 /* SingleImageViewController.swift */,
+			);
+			path = SingleImage;
+			sourceTree = "<group>";
+		};
 		6FB011672BE7892D0079A71F = {
 			isa = PBXGroup;
 			children = (
@@ -66,6 +74,7 @@
 				6FB011752BE7892D0079A71F /* SceneDelegate.swift */,
 				6FB343912BF91B6200FBACC1 /* Profile */,
 				6FB0118B2BE7CEA00079A71F /* ImagesList */,
+				6F8BFD2A2C02455400EB2D15 /* SingleImage */,
 				6FB011792BE7892D0079A71F /* Main.storyboard */,
 				6FB0117C2BE7892F0079A71F /* Assets.xcassets */,
 				6FB0117E2BE7892F0079A71F /* LaunchScreen.storyboard */,
@@ -78,7 +87,6 @@
 			isa = PBXGroup;
 			children = (
 				6FB011772BE7892D0079A71F /* ImagesListViewController.swift */,
-				6FB343922BFA5B5F00FBACC1 /* SingleImageViewController.swift */,
 				6FB011892BE7CE8B0079A71F /* ImagesListCell.swift */,
 			);
 			path = ImagesList;

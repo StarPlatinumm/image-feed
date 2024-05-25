@@ -108,18 +108,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zLm-TB-xLI" userLabel="go-back-button">
-                                <rect key="frame" x="8" y="8" width="44" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="BiT-f6-6ez"/>
-                                    <constraint firstAttribute="width" constant="44" id="NXw-0m-u7X"/>
-                                </constraints>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="backward"/>
-                                <connections>
-                                    <action selector="didTapBackButton" destination="uef-OZ-492" eventType="touchUpInside" id="CRP-Ht-4BH"/>
-                                </connections>
-                            </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GTc-eG-F9a">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <subviews>
@@ -134,6 +122,18 @@
                                     <outlet property="delegate" destination="uef-OZ-492" id="ne8-NZ-JBb"/>
                                 </connections>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zLm-TB-xLI" userLabel="go-back-button">
+                                <rect key="frame" x="8" y="8" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="BiT-f6-6ez"/>
+                                    <constraint firstAttribute="width" constant="44" id="NXw-0m-u7X"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="backward"/>
+                                <connections>
+                                    <action selector="didTapBackButton" destination="uef-OZ-492" eventType="touchUpInside" id="CRP-Ht-4BH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rxC-7m-Zpi"/>
                         <color key="backgroundColor" name="YP Black"/>
@@ -185,67 +185,10 @@
                     <view key="view" contentMode="scaleToFill" id="MMZ-nu-1M3">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-photo" translatesAutoresizingMaskIntoConstraints="NO" id="r75-2N-Mql">
-                                <rect key="frame" x="16" y="91" width="70" height="70"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="2l5-7q-zuc"/>
-                                    <constraint firstAttribute="height" constant="70" id="aV1-cj-KD4"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Екатерина Новикова" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uoG-aH-soI" userLabel="user-name">
-                                <rect key="frame" x="16" y="169" width="361" height="27.666666666666657"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
-                                <color key="textColor" name="YP White"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@ekaterina_nov" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tem-AC-lvV" userLabel="user-id">
-                                <rect key="frame" x="16" y="204.66666666666666" width="361" height="15.666666666666657"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" name="YP Dark Gray"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello, world!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rYw-cx-y6M" userLabel="user-text">
-                                <rect key="frame" x="16" y="228.33333333333334" width="361" height="15.666666666666657"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" name="YP White"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bJp-kc-Mad" userLabel="exit-putton">
-                                <rect key="frame" x="333" y="104" width="44" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="44" id="RGK-mC-3RB"/>
-                                    <constraint firstAttribute="height" constant="44" id="TPD-sC-9xI"/>
-                                </constraints>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="profile-exit"/>
-                            </button>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="aUz-x6-suL"/>
                         <color key="backgroundColor" name="YP Black"/>
-                        <constraints>
-                            <constraint firstItem="r75-2N-Mql" firstAttribute="top" secondItem="aUz-x6-suL" secondAttribute="top" constant="32" id="0cO-nO-Nfd"/>
-                            <constraint firstItem="Tem-AC-lvV" firstAttribute="trailing" secondItem="uoG-aH-soI" secondAttribute="trailing" id="Ifg-KT-g69"/>
-                            <constraint firstItem="uoG-aH-soI" firstAttribute="top" secondItem="r75-2N-Mql" secondAttribute="bottom" constant="8" id="J8I-bI-Eof"/>
-                            <constraint firstItem="rYw-cx-y6M" firstAttribute="leading" secondItem="r75-2N-Mql" secondAttribute="leading" id="OQO-eR-1l5"/>
-                            <constraint firstItem="bJp-kc-Mad" firstAttribute="trailing" secondItem="aUz-x6-suL" secondAttribute="trailing" constant="-16" id="P01-ni-Vu2"/>
-                            <constraint firstItem="r75-2N-Mql" firstAttribute="leading" secondItem="aUz-x6-suL" secondAttribute="leading" constant="16" id="PBh-oJ-xPQ"/>
-                            <constraint firstItem="bJp-kc-Mad" firstAttribute="top" secondItem="aUz-x6-suL" secondAttribute="top" constant="45" id="TmL-ed-YYB"/>
-                            <constraint firstItem="uoG-aH-soI" firstAttribute="leading" secondItem="r75-2N-Mql" secondAttribute="leading" id="VDg-h4-Kb4"/>
-                            <constraint firstItem="uoG-aH-soI" firstAttribute="trailing" secondItem="aUz-x6-suL" secondAttribute="trailing" constant="-16" id="VUg-gb-fo8"/>
-                            <constraint firstItem="Tem-AC-lvV" firstAttribute="leading" secondItem="r75-2N-Mql" secondAttribute="leading" id="X7B-7n-Ye1"/>
-                            <constraint firstItem="Tem-AC-lvV" firstAttribute="top" secondItem="uoG-aH-soI" secondAttribute="bottom" constant="8" id="cls-RP-0sO"/>
-                            <constraint firstItem="rYw-cx-y6M" firstAttribute="top" secondItem="Tem-AC-lvV" secondAttribute="bottom" constant="8" id="fpz-LP-Q4d"/>
-                            <constraint firstItem="rYw-cx-y6M" firstAttribute="trailing" secondItem="uoG-aH-soI" secondAttribute="trailing" id="xE2-Vf-A2B"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="tab-profile-active" id="zoV-6X-7UV"/>
-                    <connections>
-                        <outlet property="profilePhoto" destination="r75-2N-Mql" id="L3Z-g3-y3k"/>
-                        <outlet property="userId" destination="Tem-AC-lvV" id="0M0-wl-KX2"/>
-                        <outlet property="userName" destination="uoG-aH-soI" id="wYB-d6-u70"/>
-                        <outlet property="userText" destination="rYw-cx-y6M" id="VHs-5N-BPH"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OLw-Sq-gzD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -256,15 +199,10 @@
         <image name="0" width="1600" height="1059"/>
         <image name="backward" width="24" height="24"/>
         <image name="heart-red" width="42" height="42"/>
-        <image name="profile-exit" width="24" height="24"/>
-        <image name="profile-photo" width="70" height="70"/>
         <image name="tab-editorial-active" width="75" height="49"/>
         <image name="tab-profile-active" width="75" height="49"/>
         <namedColor name="YP Black">
             <color red="0.10196078431372549" green="0.10588235294117647" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="YP Dark Gray">
-            <color red="0.68235294117647061" green="0.68627450980392157" blue="0.70588235294117652" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="YP White">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
