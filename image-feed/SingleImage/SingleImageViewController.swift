@@ -1,6 +1,10 @@
 import UIKit
 
 final class SingleImageViewController: UIViewController {
+    
+    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     var image: UIImage? {
         didSet {
             guard isViewLoaded, let image else { return }
@@ -8,13 +12,6 @@ final class SingleImageViewController: UIViewController {
             imageView.frame.size = image.size
             rescaleAndCenterImageInScrollView(image: image)
         }
-    }
-    
-    @IBOutlet private weak var imageView: UIImageView!
-    @IBOutlet weak var scrollView: UIScrollView!
-    
-    @IBAction private func didTapBackButton() {
-        dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -44,6 +41,20 @@ final class SingleImageViewController: UIViewController {
         let y = (newContentSize.height - visibleRectSize.height) / 2
         scrollView.setContentOffset(CGPoint(x: x, y: y), animated: false)
     }
+    
+    @IBAction private func didTapBackButton() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func didTapShareButton() {
+        guard let image else { return }
+        let share = UIActivityViewController(
+            activityItems: [image],
+            applicationActivities: nil
+        )
+        present(share, animated: true, completion: nil)
+    }
+    
 }
 
 extension SingleImageViewController: UIScrollViewDelegate {
