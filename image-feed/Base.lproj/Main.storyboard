@@ -184,13 +184,13 @@
                         </tabBarAppearance>
                     </tabBar>
                     <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="7x8-bp-l82"/>
                         <segue destination="elH-qS-VWX" kind="relationship" relationship="viewControllers" id="nXg-ca-Egk"/>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="fSJ-Bv-MTN"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tuY-2l-7Y0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1257" y="-687"/>
+            <point key="canvasLocation" x="-1292" y="-602"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="3xm-VX-DEw">
