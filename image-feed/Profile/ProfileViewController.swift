@@ -97,7 +97,7 @@ final class ProfileViewController: UIViewController {
         self.exitButton = exitButton
     }
     
-    @objc func exitButtonTapped() {
+    @objc private func exitButtonTapped() {
         print("Exit button tapped!")
     }
 }
