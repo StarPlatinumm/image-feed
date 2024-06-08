@@ -197,6 +197,12 @@
                                     <color key="baseForegroundColor" name="YP Black"/>
                                     <color key="baseBackgroundColor" name="YP White"/>
                                 </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="VPu-K3-hc3" kind="show" identifier="ShowWebView" id="fAg-RN-84x"/>
                                 </connections>
@@ -241,18 +247,26 @@
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ch8-ir-1Nh">
+                                <rect key="frame" x="0.0" y="103" width="393" height="4"/>
+                                <color key="progressTintColor" name="YP Black"/>
+                            </progressView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="26P-lr-CwF"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="26P-lr-CwF" firstAttribute="trailing" secondItem="ch8-ir-1Nh" secondAttribute="trailing" id="6Nn-Zj-kDD"/>
+                            <constraint firstItem="ch8-ir-1Nh" firstAttribute="top" secondItem="26P-lr-CwF" secondAttribute="top" id="D2m-sZ-XyP"/>
                             <constraint firstItem="c4U-jY-4An" firstAttribute="leading" secondItem="PME-1T-THZ" secondAttribute="leading" id="DrQ-jW-krI"/>
                             <constraint firstItem="c4U-jY-4An" firstAttribute="trailing" secondItem="PME-1T-THZ" secondAttribute="trailing" id="ZNS-e6-fD3"/>
                             <constraint firstItem="c4U-jY-4An" firstAttribute="top" secondItem="26P-lr-CwF" secondAttribute="top" id="b3h-pE-3dC"/>
                             <constraint firstItem="c4U-jY-4An" firstAttribute="bottom" secondItem="PME-1T-THZ" secondAttribute="bottom" id="d3Y-HW-xG9"/>
+                            <constraint firstItem="ch8-ir-1Nh" firstAttribute="leading" secondItem="26P-lr-CwF" secondAttribute="leading" id="prY-rK-lbh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="lhR-dP-lMC"/>
                     <connections>
+                        <outlet property="progressView" destination="ch8-ir-1Nh" id="m3r-hK-pW1"/>
                         <outlet property="webView" destination="c4U-jY-4An" id="4HZ-ib-bdi"/>
                     </connections>
                 </viewController>

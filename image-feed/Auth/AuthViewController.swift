@@ -33,9 +33,4 @@ extension AuthViewController: WebViewViewControllerDelegate {
         //TODO: process code
         print("webViewViewController")
     }
-    
-    func webViewViewControllerDidCancel(_ vc: WebViewViewController) {
-        print("webViewViewControllerDidCancel")
-        dismiss(animated: true)
-    }
 }
