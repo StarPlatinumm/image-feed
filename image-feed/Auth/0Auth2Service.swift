@@ -16,11 +16,11 @@ final class OAuth2Service {
                     let response = try JSONDecoder().decode(AccessTokenResponse.self, from: data)
                     let tokenStorage = OAuth2TokenStorage()
                     tokenStorage.token = response.accessToken
+                    complition(.success(data))
                 } catch {
-                    print(error)
+                    complition(.failure(error))
                 }
-            case .failure(let error):
-                print(error)
+            case .failure(let error): complition(.failure(error))
             }
         }.resume()
     }
