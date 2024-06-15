@@ -11,6 +11,7 @@
 		6F291A242C14D3F5003E3660 /* URLSession+data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F291A232C14D3F5003E3660 /* URLSession+data.swift */; };
 		6F291A262C14D665003E3660 /* OAuthTokenResponseBodyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F291A252C14D665003E3660 /* OAuthTokenResponseBodyModel.swift */; };
 		6F291A282C14DB48003E3660 /* OAuth2TokenStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F291A272C14DB48003E3660 /* OAuth2TokenStorage.swift */; };
+		6F8F29C02C1DB7400088EF7E /* SnakeCaseJSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8F29BF2C1DB7400088EF7E /* SnakeCaseJSONDecoder.swift */; };
 		6FB011742BE7892D0079A71F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB011732BE7892D0079A71F /* AppDelegate.swift */; };
 		6FB011762BE7892D0079A71F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB011752BE7892D0079A71F /* SceneDelegate.swift */; };
 		6FB011782BE7892D0079A71F /* ImagesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB011772BE7892D0079A71F /* ImagesListViewController.swift */; };
@@ -32,6 +33,7 @@
 		6F291A232C14D3F5003E3660 /* URLSession+data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+data.swift"; sourceTree = "<group>"; };
 		6F291A252C14D665003E3660 /* OAuthTokenResponseBodyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthTokenResponseBodyModel.swift; sourceTree = "<group>"; };
 		6F291A272C14DB48003E3660 /* OAuth2TokenStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuth2TokenStorage.swift; sourceTree = "<group>"; };
+		6F8F29BF2C1DB7400088EF7E /* SnakeCaseJSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnakeCaseJSONDecoder.swift; sourceTree = "<group>"; };
 		6FB011702BE7892D0079A71F /* image-feed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "image-feed.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FB011732BE7892D0079A71F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6FB011752BE7892D0079A71F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				6FC433432C19E3BC00A6B14F /* Splash */,
 				6F291A232C14D3F5003E3660 /* URLSession+data.swift */,
 				6FB148792C0CC0C900937C6E /* Constants.swift */,
+				6F8F29BF2C1DB7400088EF7E /* SnakeCaseJSONDecoder.swift */,
 				6FB0117C2BE7892F0079A71F /* Assets.xcassets */,
 				6FB011792BE7892D0079A71F /* Main.storyboard */,
 				6FB0117E2BE7892F0079A71F /* LaunchScreen.storyboard */,
@@ -217,6 +220,7 @@
 				6FB011782BE7892D0079A71F /* ImagesListViewController.swift in Sources */,
 				6F291A242C14D3F5003E3660 /* URLSession+data.swift in Sources */,
 				6F291A262C14D665003E3660 /* OAuthTokenResponseBodyModel.swift in Sources */,
+				6F8F29C02C1DB7400088EF7E /* SnakeCaseJSONDecoder.swift in Sources */,
 				6FB148812C0CEBAA00937C6E /* WebViewViewControllerDelegate.swift in Sources */,
 				6FB0118A2BE7CE8B0079A71F /* ImagesListCell.swift in Sources */,
 				6FB343902BF91B4E00FBACC1 /* ProfileViewController.swift in Sources */,

@@ -13,7 +13,7 @@ final class OAuth2Service {
             switch result {
             case .success(let data):
                 do {
-                    let response = try JSONDecoder().decode(AccessTokenResponse.self, from: data)
+                    let response = try SnakeCaseJSONDecoder().decode(AccessTokenResponse.self, from: data)
                     let tokenStorage = OAuth2TokenStorage()
                     tokenStorage.token = response.accessToken
                     complition(.success(data))
