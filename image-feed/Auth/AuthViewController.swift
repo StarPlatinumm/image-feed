@@ -5,17 +5,11 @@ protocol AuthViewControllerDelegate: AnyObject {
 }
 
 final class AuthViewController: UIViewController {
+    weak var delegate: AuthViewControllerDelegate?
+    
     private let showWebViewSegueIdentifier = "ShowWebView"
     private let oauth2Service = OAuth2Service.shared
     
-    weak var delegate: AuthViewControllerDelegate?
-    
-    private func configureBackButton() {
-        navigationController?.navigationBar.backIndicatorImage = UIImage(named: "backward")
-        navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "backward")
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        navigationItem.backBarButtonItem?.tintColor = .ypBlack
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +27,13 @@ final class AuthViewController: UIViewController {
         } else {
             super.prepare(for: segue, sender: sender)
         }
+    }
+    
+    private func configureBackButton() {
+        navigationController?.navigationBar.backIndicatorImage = UIImage(named: "backward")
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "backward")
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem?.tintColor = .ypBlack
     }
 }
 
