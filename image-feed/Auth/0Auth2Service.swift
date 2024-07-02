@@ -1,28 +1,52 @@
 import Foundation
 
+enum AuthServiceError: Error {
+    case invalidRequest
+}
+
 final class OAuth2Service {
     static let shared = OAuth2Service()
+    
+    private let urlSession = URLSession.shared
+    private var task: URLSessionTask?
+    private var lastCode: String?
+    
     private init() {}
     
-    func fetchOAuthToken(code: String, complition: @escaping (Result<Data, Error>) -> Void) {
-        guard let request = makeOAuthTokenRequest(code: code) else {
-            preconditionFailure("Unable to construct OAuth token request")
+    func fetchOAuthToken(code: String, completion: @escaping (Result<Data, Error>) -> Void) {
+        assert(Thread.isMainThread)
+        
+        guard lastCode != code else {
+            completion(.failure(AuthServiceError.invalidRequest))
+            return
         }
         
-        URLSession.shared.data(for: request) { result in
+        task?.cancel()
+        lastCode = code
+        
+        guard let request = makeOAuthTokenRequest(code: code) else {
+            completion(.failure(AuthServiceError.invalidRequest))
+            return
+        }
+        
+        let task = urlSession.data(for: request) { [weak self] result in
             switch result {
             case .success(let data):
                 do {
                     let response = try SnakeCaseJSONDecoder().decode(AccessTokenResponse.self, from: data)
                     let tokenStorage = OAuth2TokenStorage()
                     tokenStorage.token = response.accessToken
-                    complition(.success(data))
+                    completion(.success(data))
                 } catch {
-                    complition(.failure(error))
+                    completion(.failure(error))
                 }
-            case .failure(let error): complition(.failure(error))
+            case .failure(let error): completion(.failure(error))
             }
-        }.resume()
+            self?.task = nil
+            self?.lastCode = nil
+        }
+        self.task = task
+        task.resume()
     }
     
     private func makeOAuthTokenRequest(code: String) -> URLRequest? {
