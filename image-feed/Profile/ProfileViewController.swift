@@ -1,6 +1,7 @@
 import UIKit
 
 final class ProfileViewController: UIViewController {
+    private let profileService = ProfileService()
     
     private var profileImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "profile-photo"))
@@ -46,11 +47,28 @@ final class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addProfileImgeView()
-        addUserNameLabel()
-        addUserIdLabel()
-        addUserTextLabel()
-        addExitButton()
+        let tokenStorage = OAuth2TokenStorage()
+        guard let token = tokenStorage.token else {
+            // добавить описание ошибки
+            return
+        }
+        print(token)
+        profileService.fetchProfile(token) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let profileData):
+                self.addProfileImgeView()
+                self.addUserNameLabel(profileData.name)
+                self.addUserIdLabel(profileData.loginName)
+                self.addUserTextLabel(profileData.bio)
+                self.addExitButton()
+            case .failure(let error):
+                print(error)
+            }
+        }
+        
+        
     }
 
     private func addProfileImgeView() {
@@ -62,23 +80,26 @@ final class ProfileViewController: UIViewController {
         profileImageView.heightAnchor.constraint(equalToConstant: 70).isActive = true
     }
     
-    private func addUserNameLabel() {
+    private func addUserNameLabel(_ text: String) {
         view.addSubview(nameLabel)
         
+        nameLabel.text = text
         nameLabel.leadingAnchor.constraint(equalTo: profileImageView.leadingAnchor).isActive = true
         nameLabel.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 8).isActive = true
     }
     
-    private func addUserIdLabel() {
+    private func addUserIdLabel(_ text: String) {
         view.addSubview(idLabel)
         
+        idLabel.text = text
         idLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor).isActive = true
         idLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 8).isActive = true
     }
     
-    private func addUserTextLabel() {
+    private func addUserTextLabel(_ text: String) {
         view.addSubview(textLabel)
         
+        textLabel.text = text
         textLabel.leadingAnchor.constraint(equalTo: idLabel.leadingAnchor).isActive = true
         textLabel.topAnchor.constraint(equalTo: idLabel.bottomAnchor, constant: 8).isActive = true
     }
