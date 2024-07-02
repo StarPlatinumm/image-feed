@@ -1,7 +1,7 @@
 import UIKit
 
 final class ProfileViewController: UIViewController {
-    private let profileService = ProfileService()
+    private let profileService = ProfileService.shared
     
     private var profileImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "profile-photo"))
@@ -11,7 +11,6 @@ final class ProfileViewController: UIViewController {
 
     private var nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Екатерина Новикова"
         label.font = UIFont.systemFont(ofSize: 23, weight: .bold)
         label.textColor = .ypWhite
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -20,7 +19,6 @@ final class ProfileViewController: UIViewController {
 
     private var idLabel: UILabel = {
         let label = UILabel()
-        label.text = "@ekaterinf_nov"
         label.font = UIFont.systemFont(ofSize: 13)
         label.textColor = .ypDarkGray
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -29,7 +27,6 @@ final class ProfileViewController: UIViewController {
 
     private var textLabel: UILabel = {
         let label = UILabel()
-        label.text = "Hello, World!"
         label.font = UIFont.systemFont(ofSize: 13)
         label.textColor = .ypWhite
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -47,27 +44,15 @@ final class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let tokenStorage = OAuth2TokenStorage()
-        guard let token = tokenStorage.token else {
-            // добавить описание ошибки
+        guard let profileData = profileService.profile else {
             return
         }
-        print(token)
-        profileService.fetchProfile(token) { [weak self] result in
-            guard let self = self else { return }
-            
-            switch result {
-            case .success(let profileData):
-                self.addProfileImgeView()
-                self.addUserNameLabel(profileData.name)
-                self.addUserIdLabel(profileData.loginName)
-                self.addUserTextLabel(profileData.bio)
-                self.addExitButton()
-            case .failure(let error):
-                print(error)
-            }
-        }
         
+        addProfileImgeView()
+        addUserNameLabel(profileData.name)
+        addUserIdLabel(profileData.loginName)
+        addUserTextLabel(profileData.bio)
+        addExitButton()
         
     }
 

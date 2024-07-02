@@ -1,6 +1,9 @@
 import Foundation
 
 final class ProfileService {
+    static let shared = ProfileService()
+    private(set) var profile: Profile?
+    
     private let urlSession = URLSession.shared
     private var task: URLSessionTask?
     private var lastToken: String?
@@ -22,23 +25,26 @@ final class ProfileService {
         }
         
         let task = urlSession.data(for: request) { [weak self] result in
+            guard let self = self else { return }
+            
             switch result {
             case .success(let data):
                 do {
                     let response = try SnakeCaseJSONDecoder().decode(ProfileResult.self, from: data)
-                    completion(.success(Profile(
+                    self.profile = Profile(
                         username: response.username,
                         name: "\(response.firstName) \(response.lastName)",
                         loginName: "@\(response.username)",
                         bio: response.bio
-                    )))
+                    )
+                    completion(.success(self.profile!))
                 } catch {
                     completion(.failure(error))
                 }
             case .failure(let error): completion(.failure(error))
             }
-            self?.task = nil
-            self?.lastToken = nil
+            self.task = nil
+            self.lastToken = nil
         }
         self.task = task
         task.resume()
