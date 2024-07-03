@@ -78,11 +78,8 @@ final class ProfileViewController: UIViewController {
             let imageUrl = URL(string: profileImageURL)
         else { return }
         // Kingfisher
-        let cache = ImageCache.default
-        cache.clearMemoryCache()
-        cache.clearDiskCache()
         profileImageView.kf.indicatorType = .activity
-        profileImageView.kf.setImage(with: imageUrl)
+        profileImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "profile-placeholder"))
     }
     
     private func addProfileImgeView() {
