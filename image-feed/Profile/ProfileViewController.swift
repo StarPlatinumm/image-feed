@@ -1,14 +1,16 @@
 import UIKit
+import Kingfisher
 
 final class ProfileViewController: UIViewController {
     private let profileService = ProfileService.shared
+    private let profileImageService = ProfileImageService.shared
     
     private var profileImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "profile-photo"))
+        let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-
+    
     private var nameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 23, weight: .bold)
@@ -16,7 +18,7 @@ final class ProfileViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
+    
     private var idLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 13)
@@ -24,7 +26,7 @@ final class ProfileViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
+    
     private var textLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 13)
@@ -32,7 +34,7 @@ final class ProfileViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
+    
     private var exitButton: UIButton  = {
         let exitButton = UIButton(type: .custom)
         exitButton.setImage(UIImage(named: "profile-exit"), for: .normal)
@@ -40,22 +42,50 @@ final class ProfileViewController: UIViewController {
         exitButton.translatesAutoresizingMaskIntoConstraints = false
         return exitButton
     }()
-
+    
+    private var profileImageServiceObserver: NSObjectProtocol?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // получаем данные пользователя
         guard let profileData = profileService.profile else {
             return
         }
         
+        // рисуем интерфейс
         addProfileImgeView()
         addUserNameLabel(profileData.name)
         addUserIdLabel(profileData.loginName)
         addUserTextLabel(profileData.bio)
         addExitButton()
         
+        // получаем фото пользователя
+        profileImageServiceObserver = NotificationCenter.default.addObserver(
+            forName: ProfileImageService.didChangeNotification,
+            object: nil,
+            queue: .main
+        ) { [weak self] _ in
+            guard let self = self else { return }
+            self.updateAvatar()
+        }
+        updateAvatar()
     }
-
+    
+    private func updateAvatar() {
+        guard
+            let profileImageURL = profileImageService.avatarURL,
+            let imageUrl = URL(string: profileImageURL)
+        else { return }
+        // Kingfisher
+        let cache = ImageCache.default
+        cache.clearMemoryCache()
+        cache.clearDiskCache()
+        let processor = RoundCornerImageProcessor(cornerRadius: profileImageView.frame.size.width / 2)
+        profileImageView.kf.indicatorType = .activity
+        profileImageView.kf.setImage(with: imageUrl, options: [.processor(processor)])
+    }
+    
     private func addProfileImgeView() {
         view.addSubview(profileImageView)
         

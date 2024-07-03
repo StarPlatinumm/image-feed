@@ -4,26 +4,44 @@ final class SplashViewController: UIViewController {
     private let showAuthenticationScreenSegueIdentifier = "ShowAuthenticationScreen"
     private let storage = OAuth2TokenStorage()
     private let profileService = ProfileService.shared
+    private let profileImageService = ProfileImageService.shared
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
         if let token = storage.token {
-            fetchProfile(token) { [weak self] in
-                self?.switchToTabBarController()
+            fetchProfile(token) { [weak self] result in
+                guard let self = self else { return }
+                
+                switch result {
+                case .success(let result):
+                    self.fetchProfileImageURL(username: result.username, token: token)
+                    self.switchToTabBarController()
+                case .failure(let error):
+                    print(error)
+                }
             }
         } else {
             performSegue(withIdentifier: showAuthenticationScreenSegueIdentifier, sender: nil)
         }
     }
     
-    private func fetchProfile(_ token: String, completion: @escaping () -> Void) {
-        profileService.fetchProfile(token) { [weak self] result in
-            guard let self = self else { return }
-            
+    private func fetchProfile(_ token: String, completion: @escaping (Result<Profile, Error>) -> Void) {
+        profileService.fetchProfile(token) { result in
             switch result {
-            case .success:
-                completion()
+            case .success(let data):
+                completion(.success(data))
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    private func fetchProfileImageURL(username: String, token: String) {
+        profileImageService.fetchProfileImageURL(username: username, token: token) { result in
+            switch result {
+            case .success(let result):
+                print("fetchProfileImageURL: \(result)")
             case .failure(let error):
                 print(error)
             }
@@ -72,8 +90,16 @@ extension SplashViewController {
 extension SplashViewController: AuthViewControllerDelegate {
     func didAuthenticate(_ vc: AuthViewController) {
         if let token = storage.token {
-            fetchProfile(token) { [weak self] in
-                self?.switchToTabBarController()
+            fetchProfile(token) { [weak self] result in
+                guard let self = self else { return }
+                
+                switch result {
+                case .success(let result):
+                    self.fetchProfileImageURL(username: result.username, token: token)
+                    self.switchToTabBarController()
+                case .failure(let error):
+                    print(error)
+                }
             }
         } else {
             print("Couldn't read auth token")
