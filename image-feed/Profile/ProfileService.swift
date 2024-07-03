@@ -24,23 +24,18 @@ final class ProfileService {
             return
         }
         
-        let task = urlSession.data(for: request) { [weak self] result in
+        let task = urlSession.objectTask(for: request) { [weak self] (result: Result<ProfileResult, Error>) in
             guard let self = self else { return }
             
             switch result {
             case .success(let data):
-                do {
-                    let response = try SnakeCaseJSONDecoder().decode(ProfileResult.self, from: data)
-                    self.profile = Profile(
-                        username: response.username,
-                        name: "\(response.firstName) \(response.lastName)",
-                        loginName: "@\(response.username)",
-                        bio: response.bio
-                    )
-                    completion(.success(self.profile!))
-                } catch {
-                    completion(.failure(error))
-                }
+                self.profile = Profile(
+                    username: data.username,
+                    name: "\(data.firstName) \(data.lastName)",
+                    loginName: "@\(data.username)",
+                    bio: data.bio
+                )
+                completion(.success(self.profile!))
             case .failure(let error): completion(.failure(error))
             }
             self.task = nil

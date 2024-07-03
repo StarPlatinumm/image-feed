@@ -13,7 +13,7 @@ final class OAuth2Service {
     
     private init() {}
     
-    func fetchOAuthToken(code: String, completion: @escaping (Result<Data, Error>) -> Void) {
+    func fetchOAuthToken(code: String, completion: @escaping (Result<Data?, Error>) -> Void) {
         assert(Thread.isMainThread)
         
         guard lastCode != code else {
@@ -29,17 +29,12 @@ final class OAuth2Service {
             return
         }
         
-        let task = urlSession.data(for: request) { [weak self] result in
+        let task = urlSession.objectTask(for: request) { [weak self] (result: Result<AccessTokenResponse, Error>) in
             switch result {
             case .success(let data):
-                do {
-                    let response = try SnakeCaseJSONDecoder().decode(AccessTokenResponse.self, from: data)
-                    let tokenStorage = OAuth2TokenStorage()
-                    tokenStorage.token = response.accessToken
-                    completion(.success(data))
-                } catch {
-                    completion(.failure(error))
-                }
+                let tokenStorage = OAuth2TokenStorage()
+                tokenStorage.token = data.accessToken
+                completion(.success(nil))
             case .failure(let error): completion(.failure(error))
             }
             self?.task = nil
