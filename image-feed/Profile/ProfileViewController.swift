@@ -81,14 +81,15 @@ final class ProfileViewController: UIViewController {
         let cache = ImageCache.default
         cache.clearMemoryCache()
         cache.clearDiskCache()
-        let processor = RoundCornerImageProcessor(cornerRadius: profileImageView.frame.size.width / 2)
         profileImageView.kf.indicatorType = .activity
-        profileImageView.kf.setImage(with: imageUrl, options: [.processor(processor)])
+        profileImageView.kf.setImage(with: imageUrl)
     }
     
     private func addProfileImgeView() {
         view.addSubview(profileImageView)
         
+        profileImageView.layer.cornerRadius = 35
+        profileImageView.layer.masksToBounds = true
         profileImageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
         profileImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32).isActive = true
         profileImageView.widthAnchor.constraint(equalToConstant: 70).isActive = true
