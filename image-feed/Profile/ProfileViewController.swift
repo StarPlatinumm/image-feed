@@ -47,6 +47,7 @@ final class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.ypBlack
         
         // получаем данные пользователя
         guard let profileData = profileService.profile else {
