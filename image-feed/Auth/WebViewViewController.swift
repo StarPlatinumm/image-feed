@@ -61,6 +61,10 @@ final class WebViewViewController: UIViewController {
             progressView.isHidden = false
         }
     }
+    @IBAction func didBackButtontapped() {
+        dismiss(animated: true)
+    }
+    
 }
 
 extension WebViewViewController: WKNavigationDelegate {

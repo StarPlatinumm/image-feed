@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lJE-1e-SVj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -203,7 +203,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="VPu-K3-hc3" kind="show" identifier="ShowWebView" id="fAg-RN-84x"/>
+                                    <segue destination="VPu-K3-hc3" kind="presentation" identifier="ShowWebView" id="fAg-RN-84x"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -235,11 +235,11 @@
             <objects>
                 <viewController id="VPu-K3-hc3" customClass="WebViewViewController" customModule="image_feed" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PME-1T-THZ">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c4U-jY-4An">
-                                <rect key="frame" x="0.0" y="103" width="393" height="749"/>
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                                 <color key="backgroundColor" name="YP White"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -247,16 +247,30 @@
                                 </wkWebViewConfiguration>
                             </wkWebView>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ch8-ir-1Nh">
-                                <rect key="frame" x="0.0" y="103" width="393" height="4"/>
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="4"/>
                                 <color key="progressTintColor" name="YP Black"/>
                             </progressView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ujD-bz-xCX">
+                                <rect key="frame" x="0.0" y="4" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="EZ1-Yx-BnK"/>
+                                    <constraint firstAttribute="width" constant="44" id="uyd-Co-OUf"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="backward-black"/>
+                                <connections>
+                                    <action selector="didBackButtontapped" destination="VPu-K3-hc3" eventType="touchUpInside" id="i2A-eS-9Tp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="26P-lr-CwF"/>
                         <color key="backgroundColor" name="YP White"/>
                         <constraints>
-                            <constraint firstItem="26P-lr-CwF" firstAttribute="trailing" secondItem="ch8-ir-1Nh" secondAttribute="trailing" id="6Nn-Zj-kDD"/>
+                            <constraint firstItem="ujD-bz-xCX" firstAttribute="leading" secondItem="26P-lr-CwF" secondAttribute="leading" id="3M4-J4-yfb"/>
+                            <constraint firstItem="ch8-ir-1Nh" firstAttribute="trailing" secondItem="26P-lr-CwF" secondAttribute="trailing" id="6Nn-Zj-kDD"/>
                             <constraint firstItem="ch8-ir-1Nh" firstAttribute="top" secondItem="26P-lr-CwF" secondAttribute="top" id="D2m-sZ-XyP"/>
                             <constraint firstItem="c4U-jY-4An" firstAttribute="leading" secondItem="PME-1T-THZ" secondAttribute="leading" id="DrQ-jW-krI"/>
+                            <constraint firstItem="ujD-bz-xCX" firstAttribute="top" secondItem="ch8-ir-1Nh" secondAttribute="bottom" id="O2A-gE-6Vs"/>
                             <constraint firstItem="c4U-jY-4An" firstAttribute="trailing" secondItem="PME-1T-THZ" secondAttribute="trailing" id="ZNS-e6-fD3"/>
                             <constraint firstItem="c4U-jY-4An" firstAttribute="top" secondItem="26P-lr-CwF" secondAttribute="top" id="b3h-pE-3dC"/>
                             <constraint firstItem="c4U-jY-4An" firstAttribute="bottom" secondItem="PME-1T-THZ" secondAttribute="bottom" id="d3Y-HW-xG9"/>
@@ -271,7 +285,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GX7-I5-2RR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1392" y="-1409"/>
+            <point key="canvasLocation" x="1391.6030534351144" y="-1409.1549295774648"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="EYT-TK-6pk">
@@ -291,29 +305,11 @@
             </objects>
             <point key="canvasLocation" x="-124" y="-712"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="DyX-mJ-qXd">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gbe-xv-all" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <navigationController storyboardIdentifier="NavigationController" automaticallyAdjustsScrollViewInsets="NO" id="lJE-1e-SVj" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="zQu-QN-2OF"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Kac-3I-bb1">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="dIm-cS-FPd" kind="relationship" relationship="rootViewController" id="AcH-Vs-wu9"/>
-                    </connections>
-                </navigationController>
-            </objects>
-            <point key="canvasLocation" x="-124" y="-1409"/>
-        </scene>
     </scenes>
     <resources>
         <image name="0" width="1600" height="1059"/>
         <image name="backward" width="24" height="24"/>
+        <image name="backward-black" width="9" height="16"/>
         <image name="heart-red" width="42" height="42"/>
         <image name="share-button" width="51" height="51"/>
         <image name="tab-editorial-active" width="75" height="49"/>

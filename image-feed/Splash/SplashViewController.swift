@@ -12,7 +12,7 @@ final class SplashViewController: UIViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.ypBlack
@@ -23,7 +23,9 @@ final class SplashViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
+        
+        storage.token = nil
+        
         if let token = storage.token {
             fetchProfile(token) { [weak self] result in
                 guard let self = self else { return }
@@ -37,13 +39,18 @@ final class SplashViewController: UIViewController {
                 }
             }
         } else {
-            let authViewController = AuthViewController()
+            let storyBoard = UIStoryboard(name: "Main", bundle: .main)
+            let authViewController = storyBoard.instantiateViewController(identifier: "AuthViewController") as? AuthViewController
+            
+            guard let authViewController else { return }
+            
             authViewController.delegate = self
             authViewController.modalPresentationStyle = .fullScreen
+            
             present(authViewController, animated: true)
         }
     }
-
+    
     private func addLogoImgeView() {
         view.addSubview(logoImageView)
         
@@ -83,7 +90,7 @@ final class SplashViewController: UIViewController {
         // Создаём экземпляр нужного контроллера из Storyboard с помощью ранее заданного идентификатора
         let tabBarController = UIStoryboard(name: "Main", bundle: .main)
             .instantiateViewController(withIdentifier: "TabBarViewController")
-           
+        
         // Установим в `rootViewController` полученный контроллер
         window.rootViewController = tabBarController
     }
