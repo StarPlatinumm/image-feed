@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="M42-rB-f5i">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -173,7 +173,7 @@
         <!--Auth View Controller-->
         <scene sceneID="pXp-HB-0Jp">
             <objects>
-                <viewController id="dIm-cS-FPd" customClass="AuthViewController" customModule="image_feed" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AuthViewController" id="dIm-cS-FPd" customClass="AuthViewController" customModule="image_feed" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="c5b-Hp-IRM">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -186,7 +186,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ovm-le-3XO">
-                                <rect key="frame" x="16" y="714" width="361" height="48"/>
+                                <rect key="frame" x="16" y="680" width="361" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="8iK-iJ-YC5"/>
                                 </constraints>
@@ -228,7 +228,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XDN-PN-k6W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="633" y="-1646"/>
+            <point key="canvasLocation" x="656" y="-1409"/>
         </scene>
         <!--Web View View Controller-->
         <scene sceneID="fKu-zf-m0l">
@@ -239,7 +239,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c4U-jY-4An">
-                                <rect key="frame" x="0.0" y="44" width="393" height="808"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="749"/>
                                 <color key="backgroundColor" name="YP White"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -247,7 +247,7 @@
                                 </wkWebViewConfiguration>
                             </wkWebView>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ch8-ir-1Nh">
-                                <rect key="frame" x="0.0" y="44" width="393" height="4"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="4"/>
                                 <color key="progressTintColor" name="YP Black"/>
                             </progressView>
                         </subviews>
@@ -271,34 +271,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GX7-I5-2RR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1369" y="-1646"/>
-        </scene>
-        <!--Splash View Controller-->
-        <scene sceneID="eGz-iO-91C">
-            <objects>
-                <viewController id="M42-rB-f5i" customClass="SplashViewController" customModule="image_feed" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="o5x-eW-mjG">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch-screen-logo" translatesAutoresizingMaskIntoConstraints="NO" id="lFS-Pf-aa1">
-                                <rect key="frame" x="159" y="387" width="75" height="78"/>
-                            </imageView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="ViW-34-iXb"/>
-                        <color key="backgroundColor" name="YP Black"/>
-                        <constraints>
-                            <constraint firstItem="lFS-Pf-aa1" firstAttribute="centerX" secondItem="o5x-eW-mjG" secondAttribute="centerX" id="OxX-Fk-oAe"/>
-                            <constraint firstItem="lFS-Pf-aa1" firstAttribute="centerY" secondItem="o5x-eW-mjG" secondAttribute="centerY" id="gQi-Zp-aoH"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <segue destination="lJE-1e-SVj" kind="presentation" identifier="ShowAuthenticationScreen" modalPresentationStyle="fullScreen" id="A0P-DY-j0z"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Zks-qZ-qBz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1022" y="-1106"/>
+            <point key="canvasLocation" x="1392" y="-1409"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="EYT-TK-6pk">
@@ -325,7 +298,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="zQu-QN-2OF"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Kac-3I-bb1">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -335,14 +308,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gbe-xv-all" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-147" y="-1646"/>
+            <point key="canvasLocation" x="-124" y="-1409"/>
         </scene>
     </scenes>
     <resources>
         <image name="0" width="1600" height="1059"/>
         <image name="backward" width="24" height="24"/>
         <image name="heart-red" width="42" height="42"/>
-        <image name="launch-screen-logo" width="75" height="78"/>
         <image name="share-button" width="51" height="51"/>
         <image name="tab-editorial-active" width="75" height="49"/>
         <image name="upsplash-logo" width="60" height="60"/>
