@@ -117,11 +117,8 @@
 				6F8BFD2A2C02455400EB2D15 /* SingleImage */,
 				6FB1487D2C0CD06400937C6E /* Auth */,
 				6FC433432C19E3BC00A6B14F /* Splash */,
-				6F291A232C14D3F5003E3660 /* URLSession+data.swift */,
-				6FF573202C36F3B600BD42CB /* TabBarController.swift */,
-				6F5161522C341ED900688747 /* UIBlockingProgressHUD.swift */,
-				6FB148792C0CC0C900937C6E /* Constants.swift */,
-				6F8F29BF2C1DB7400088EF7E /* SnakeCaseJSONDecoder.swift */,
+				6FF573222C37035500BD42CB /* TabBar */,
+				6FF573232C37039600BD42CB /* Helpers */,
 				6FB0117C2BE7892F0079A71F /* Assets.xcassets */,
 				6FB011792BE7892D0079A71F /* Main.storyboard */,
 				6FB0117E2BE7892F0079A71F /* LaunchScreen.storyboard */,
@@ -171,6 +168,25 @@
 				6FC433412C19DF7E00A6B14F /* SplashViewController.swift */,
 			);
 			path = Splash;
+			sourceTree = "<group>";
+		};
+		6FF573222C37035500BD42CB /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				6FF573202C36F3B600BD42CB /* TabBarController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		6FF573232C37039600BD42CB /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				6F5161522C341ED900688747 /* UIBlockingProgressHUD.swift */,
+				6F291A232C14D3F5003E3660 /* URLSession+data.swift */,
+				6FB148792C0CC0C900937C6E /* Constants.swift */,
+				6F8F29BF2C1DB7400088EF7E /* SnakeCaseJSONDecoder.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
