@@ -37,13 +37,13 @@ final class SplashViewController: UIViewController {
                 }
             }
         } else {
-            performSegue(withIdentifier: showAuthenticationScreenSegueIdentifier, sender: nil)
             let authViewController = AuthViewController()
             authViewController.delegate = self
             authViewController.modalPresentationStyle = .fullScreen
             present(authViewController, animated: true)
         }
     }
+
     private func addLogoImgeView() {
         view.addSubview(logoImageView)
         
