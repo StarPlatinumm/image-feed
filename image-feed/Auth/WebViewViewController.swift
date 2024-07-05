@@ -61,7 +61,7 @@ final class WebViewViewController: UIViewController {
             progressView.isHidden = false
         }
     }
-    @IBAction func didBackButtontapped() {
+    @IBAction private func didBackButtontapped() {
         dismiss(animated: true)
     }
     
