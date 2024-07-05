@@ -22,11 +22,14 @@ extension URLSession {
                 if 200 ..< 300 ~= statusCode {
                     fulfillCompletionOnTheMainThread(.success(data))
                 } else {
+                    print("[dataTask]: NetworkError - код ошибки \(statusCode)")
                     fulfillCompletionOnTheMainThread(.failure(NetworkError.httpStatusCode(statusCode)))
                 }
             } else if let error {
+                print("[dataTask]: NetworkError - описание ошибки \(error.localizedDescription)")
                 fulfillCompletionOnTheMainThread(.failure(NetworkError.urlRequestError(error)))
             } else {
+                print("[dataTask]: NetworkError - неизвестная ошибка")
                 fulfillCompletionOnTheMainThread(.failure(NetworkError.urlSessionError))
             }
         }
@@ -47,6 +50,7 @@ extension URLSession {
                     let response = try SnakeCaseJSONDecoder().decode(T.self, from: data)
                     completion(.success(response))
                 } catch (let error) {
+                    print("Ошибка декодирования: \(error.localizedDescription), Данные: \(String(data: data, encoding: .utf8) ?? "")")
                     completion(.failure(error))
                 }
             case .failure(let error): completion(.failure(error))
