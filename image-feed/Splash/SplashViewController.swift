@@ -24,8 +24,6 @@ final class SplashViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        storage.token = nil
-        
         if let token = storage.token {
             fetchProfile(token) { [weak self] result in
                 guard let self = self else { return }

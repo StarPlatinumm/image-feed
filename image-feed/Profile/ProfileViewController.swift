@@ -38,7 +38,7 @@ final class ProfileViewController: UIViewController {
     private var exitButton: UIButton  = {
         let exitButton = UIButton(type: .custom)
         exitButton.setImage(UIImage(named: "profile-exit"), for: .normal)
-        exitButton.addTarget(ProfileViewController.self, action: #selector(exitButtonTapped), for: .touchUpInside)
+        exitButton.addTarget(self, action: #selector(exitButtonTapped), for: .touchUpInside)
         exitButton.translatesAutoresizingMaskIntoConstraints = false
         return exitButton
     }()
