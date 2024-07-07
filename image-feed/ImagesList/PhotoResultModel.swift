@@ -18,6 +18,6 @@ struct PhotoResult: Decodable {
     let blurHash: String
     let likes: Int
     let likedByUser: Bool
-    let description: String
+    let description: String?
     let urls: UrlsResult
 }

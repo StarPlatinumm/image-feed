@@ -41,6 +41,8 @@ final class ImagesListService {
     }
     
     private func makePhotosRequest(page: Int, perPage: Int) -> URLRequest? {
+        guard let token = OAuth2TokenStorage().token else { return nil }
+        
         guard let baseURL = URL(string: "https://api.unsplash.com") else { return nil }
         
         var components = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)
@@ -55,6 +57,7 @@ final class ImagesListService {
         guard let url = components?.url else { return nil }
         
         var request = URLRequest(url: url)
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.httpMethod = "GET"
         
         return request
