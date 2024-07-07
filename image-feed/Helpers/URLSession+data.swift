@@ -22,7 +22,7 @@ extension URLSession {
                 if 200 ..< 300 ~= statusCode {
                     fulfillCompletionOnTheMainThread(.success(data))
                 } else {
-                    print("[dataTask]: NetworkError - код ошибки \(statusCode)")
+                    print("[dataTask]: NetworkError - код ошибки \(statusCode): \(String(data: data, encoding: .utf8) ?? "")")
                     fulfillCompletionOnTheMainThread(.failure(NetworkError.httpStatusCode(statusCode)))
                 }
             } else if let error {

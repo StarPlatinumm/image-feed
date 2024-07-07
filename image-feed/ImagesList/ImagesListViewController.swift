@@ -60,7 +60,7 @@ final class ImagesListViewController: UIViewController {
         let photo = photos[indexPath.row]
         guard let imageUrl = URL(string: photo.thumbImageURL) else { return }
         // Kingfisher
-        cell.mainImageView.kf.indicatorType = .activity
+//        cell.mainImageView.kf.indicatorType = .activity
         cell.mainImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "scribble-placeholder"))
         
         // градиент

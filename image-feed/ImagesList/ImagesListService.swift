@@ -28,8 +28,7 @@ final class ImagesListService {
                 addToPhotos(newPhotos: newPhotos)
                 NotificationCenter.default.post(
                     name: ImagesListService.didChangeNotification,
-                    object: self,
-                    userInfo: ["Photos": photos]
+                    object: self
                 )
             case .failure(let error): print(error)
             }
