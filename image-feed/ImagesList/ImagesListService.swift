@@ -102,5 +102,9 @@ final class ImagesListService {
             }
         }.resume()
     }
+    
+    func cleanPhotos() {
+        photos = []
+    }
 }
 

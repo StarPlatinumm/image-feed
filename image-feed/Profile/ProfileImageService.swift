@@ -57,5 +57,9 @@ final class ProfileImageService {
         
         return request
     }
+    
+    func cleanProfileImage() {
+        avatarURL = nil
+    }
 }
 

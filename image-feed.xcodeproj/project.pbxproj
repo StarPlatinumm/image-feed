@@ -39,6 +39,7 @@
 		6FF573252C3AB4D700BD42CB /* ImagesListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF573242C3AB4D700BD42CB /* ImagesListService.swift */; };
 		6FF573272C3AB57E00BD42CB /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF573262C3AB57E00BD42CB /* PhotoModel.swift */; };
 		6FF573292C3AB87B00BD42CB /* PhotoResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF573282C3AB87B00BD42CB /* PhotoResultModel.swift */; };
+		6FF5733A2C3C2B3500BD42CB /* ProfileLogoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF573392C3C2B3500BD42CB /* ProfileLogoutService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,7 @@
 		6FF573242C3AB4D700BD42CB /* ImagesListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesListService.swift; sourceTree = "<group>"; };
 		6FF573262C3AB57E00BD42CB /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
 		6FF573282C3AB87B00BD42CB /* PhotoResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoResultModel.swift; sourceTree = "<group>"; };
+		6FF573392C3C2B3500BD42CB /* ProfileLogoutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLogoutService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +165,7 @@
 			children = (
 				6FB3438F2BF91B4D00FBACC1 /* ProfileViewController.swift */,
 				6F5161542C3421D300688747 /* ProfileService.swift */,
+				6FF573392C3C2B3500BD42CB /* ProfileLogoutService.swift */,
 				6F51615A2C35357800688747 /* ProfileImageService.swift */,
 				6F5161562C34227D00688747 /* ProfileDataResponseBodyModel.swift */,
 				6F51615C2C35394C00688747 /* ProfileImageResponseBodyModel.swift */,
@@ -281,6 +284,7 @@
 			files = (
 				6F5161572C34227D00688747 /* ProfileDataResponseBodyModel.swift in Sources */,
 				6FB011782BE7892D0079A71F /* ImagesListViewController.swift in Sources */,
+				6FF5733A2C3C2B3500BD42CB /* ProfileLogoutService.swift in Sources */,
 				6F291A242C14D3F5003E3660 /* URLSession+data.swift in Sources */,
 				6F291A262C14D665003E3660 /* OAuthTokenResponseBodyModel.swift in Sources */,
 				6F8F29C02C1DB7400088EF7E /* SnakeCaseJSONDecoder.swift in Sources */,
