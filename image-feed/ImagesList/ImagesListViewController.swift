@@ -47,9 +47,8 @@ final class ImagesListViewController: UIViewController {
                 return
             }
             
-            // полноэкранный режим пока не работает
-            let image = UIImage(named: "scribble-placeholder")
-            viewController.image = image
+            // полноэкранный режим
+            viewController.photo = photos[indexPath.row]
         } else {
             super.prepare(for: segue, sender: sender)
         }
