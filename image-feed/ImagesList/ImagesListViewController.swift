@@ -60,7 +60,7 @@ final class ImagesListViewController: UIViewController {
         let photo = photos[indexPath.row]
         guard let imageUrl = URL(string: photo.thumbImageURL) else { return }
         // Kingfisher
-//        cell.mainImageView.kf.indicatorType = .activity
+        cell.mainImageView.kf.indicatorType = .activity
         cell.mainImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "scribble-placeholder"))
         
         // градиент
@@ -70,7 +70,7 @@ final class ImagesListViewController: UIViewController {
         gradientLayer.frame = CGRect(x: 0, y: cell.frame.height - gradientHeight - marginTopAndBottom, width: cell.mainImageView.bounds.width, height: gradientHeight) // настраиваем положение слоя
         gradientLayer.colors = [UIColor.clear.cgColor, UIColor.ypBlack.withAlphaComponent(0.2).cgColor] // настраиваем цвета слоя
         gradientLayer.locations = [0.0, 1.0]
-        cell.mainImageView.layer.sublayers?.forEach { $0.removeFromSuperlayer() } // чистим слои
+        cell.mainImageView.layer.sublayers?.removeAll(where: { $0 is CAGradientLayer }) // чистим слои
         cell.mainImageView.layer.addSublayer(gradientLayer) // добавляем слой градиента к изображению
         
         // дата
