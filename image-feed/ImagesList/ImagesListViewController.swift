@@ -1,11 +1,11 @@
 import UIKit
 import Kingfisher
+import ProgressHUD
 
 final class ImagesListViewController: UIViewController {
     
     @IBOutlet private var tableView: UITableView!
-    
-    //    private let photosName: [String] = Array(0..<20).map{ "\($0)" }
+
     private let showSingleImageSegueIdentifier = "ShowSingleImage"
     
     private var imagesListServiceObserver: NSObjectProtocol?
@@ -62,7 +62,6 @@ final class ImagesListViewController: UIViewController {
         // Kingfisher
         cell.mainImageView.kf.indicatorType = .activity
         cell.mainImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "scribble-placeholder"))
-        cell.mainImageView.accessibilityLabel = photo.id // запоминаем id фото
         
         // градиент
         let gradientLayer = CAGradientLayer() // создаём слой градиента
@@ -79,7 +78,6 @@ final class ImagesListViewController: UIViewController {
         
         // лайк
         cell.likeButton.setImage(UIImage(named: photo.isLiked ? "heart-red" : "heart-gray"), for: .normal)
-        cell.likeButton.tag = photo.isLiked ? 1 : 0 // используем свойство tag, чтобы понять, лайкнута ли картинка
     }
     
     func updateTableViewAnimated() {
@@ -110,6 +108,8 @@ extension ImagesListViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
+        imageListCell.delegate = self
+        
         configCell(for: imageListCell, with: indexPath)
         return imageListCell
     }
@@ -137,5 +137,37 @@ extension ImagesListViewController: UITableViewDelegate {
         if indexPath.row + 1 == imagesListService.photos.count {
             imagesListService.fetchPhotosNextPage()
         }
+    }
+}
+
+extension ImagesListViewController: ImagesListCellDelegate {
+    func imageListCellDidTapLike(_ cell: ImagesListCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        let photo = photos[indexPath.row]
+        // Покажем лоадер
+        UIBlockingProgressHUD.show()
+        imagesListService.changeLike(photoId: photo.id, isLike: !photo.isLiked) { result in
+            switch result {
+            case .success:
+                // Синхронизируем массив картинок с сервисом
+                self.photos = self.imagesListService.photos
+                // Изменим индикацию лайка картинки
+                cell.setIsLiked(self.photos[indexPath.row].isLiked)
+                // Уберём лоадер
+                UIBlockingProgressHUD.dismiss()
+            case .failure:
+                // Уберём лоадер
+                UIBlockingProgressHUD.dismiss()
+                // Покажем, что что-то пошло не так
+                self.showAlert(title: "Что-то пошло не так :(", message: "Попробуйте ещё раз позже")
+            }
+        }
+    }
+    
+    private func showAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
     }
 }
