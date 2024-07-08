@@ -87,11 +87,11 @@ final class ImagesListService {
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.httpMethod = isLike ? "POST" : "DELETE"
         
-        let task = urlSession.data(for: request) { [weak self] (result: Result<Data, Error>) in
+        urlSession.data(for: request) { [weak self] (result: Result<Data, Error>) in
             guard let self = self else { return }
             
             switch result {
-            case .success(let newPhotos):
+            case .success:
                 // Поиск индекса элемента
                 if let index = self.photos.firstIndex(where: { $0.id == photoId }) {
                     self.photos[index].isLiked = isLike
