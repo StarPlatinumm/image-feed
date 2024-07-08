@@ -73,10 +73,34 @@ final class ImagesListService {
                 welcomeDescription: photo.description,
                 thumbImageURL: photo.urls.thumb,
                 largeImageURL: photo.urls.full,
-                isLiked: false
+                isLiked: photo.likedByUser
             )
             photos.append(newPhoto)
         }
+    }
+    
+    func changeLike(photoId: String, isLike: Bool, _ completion: @escaping (Result<Void?, Error>) -> Void) {
+        guard let token = OAuth2TokenStorage().token else { return }
+        guard let url = URL(string: "https://api.unsplash.com/photos/\(photoId)/like") else { return }
+        
+        var request = URLRequest(url: url)
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.httpMethod = isLike ? "POST" : "DELETE"
+        
+        let task = urlSession.data(for: request) { [weak self] (result: Result<Data, Error>) in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let newPhotos):
+                // Поиск индекса элемента
+                if let index = self.photos.firstIndex(where: { $0.id == photoId }) {
+                    self.photos[index].isLiked = isLike
+                    completion(.success(nil))
+                }
+            case .failure(let error): 
+                completion(.failure(error))
+            }
+        }.resume()
     }
 }
 

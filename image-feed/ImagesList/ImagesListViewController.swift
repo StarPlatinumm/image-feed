@@ -62,6 +62,7 @@ final class ImagesListViewController: UIViewController {
         // Kingfisher
         cell.mainImageView.kf.indicatorType = .activity
         cell.mainImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "scribble-placeholder"))
+        cell.mainImageView.accessibilityLabel = photo.id // запоминаем id фото
         
         // градиент
         let gradientLayer = CAGradientLayer() // создаём слой градиента
@@ -78,6 +79,7 @@ final class ImagesListViewController: UIViewController {
         
         // лайк
         cell.likeButton.setImage(UIImage(named: photo.isLiked ? "heart-red" : "heart-gray"), for: .normal)
+        cell.likeButton.tag = photo.isLiked ? 1 : 0 // используем свойство tag, чтобы понять, лайкнута ли картинка
     }
     
     func updateTableViewAnimated() {
