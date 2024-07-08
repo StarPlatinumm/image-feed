@@ -63,6 +63,7 @@ final class ImagesListService {
     
     private func addToPhotos(newPhotos: [PhotoResult]) {
         let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
         
         for photo in newPhotos {
             let newPhoto = Photo(
