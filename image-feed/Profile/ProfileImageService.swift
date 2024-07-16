@@ -49,13 +49,17 @@ final class ProfileImageService {
     }
     
     private func makeProfileDataRequest(username: String, token: String) -> URLRequest? {
-        guard let url = URL(string: "https://api.unsplash.com/users/\(username)") else { return nil }
+        guard let url = URL(string: "\(Constants.defaultBaseURL)/users/\(username)") else { return nil }
         
         var request = URLRequest(url: url)
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.httpMethod = "GET"
         
         return request
+    }
+    
+    func cleanProfileImage() {
+        avatarURL = nil
     }
 }
 
