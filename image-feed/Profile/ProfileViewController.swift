@@ -132,6 +132,10 @@ final class ProfileViewController: UIViewController {
         
         let logoutAction = UIAlertAction(title: "Да", style: .default) { _ in
             ProfileLogoutService.shared.logout()
+            // Возвращаемся на SplashViewController
+            if let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
+                window.rootViewController = SplashViewController()
+            }
         }
         let cancelAction = UIAlertAction(title: "Нет", style: .cancel, handler: nil)
         

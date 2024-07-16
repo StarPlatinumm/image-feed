@@ -40,7 +40,7 @@ final class ImagesListService {
     }
     
     private func makePhotosRequest(page: Int, perPage: Int) -> URLRequest? {
-        guard let baseURL = URL(string: "https://api.unsplash.com") else { return nil }
+        guard let baseURL = URL(string: Constants.defaultBaseURL) else { return nil }
         guard let token = OAuth2TokenStorage().token else { return nil }
         
         var components = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)
@@ -81,7 +81,7 @@ final class ImagesListService {
     
     func changeLike(photoId: String, isLike: Bool, _ completion: @escaping (Result<Void?, Error>) -> Void) {
         guard let token = OAuth2TokenStorage().token else { return }
-        guard let url = URL(string: "https://api.unsplash.com/photos/\(photoId)/like") else { return }
+        guard let url = URL(string: "\(Constants.defaultBaseURL)/photos/\(photoId)/like") else { return }
         
         var request = URLRequest(url: url)
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")

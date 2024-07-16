@@ -17,10 +17,6 @@ final class ProfileLogoutService {
         profileService.cleanProfile()
         profileImageService.cleanProfileImage()
         imagesListService.cleanPhotos()
-        // Возвращаемся на SplashViewController
-        if let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
-            window.rootViewController = SplashViewController()
-        }
         UIBlockingProgressHUD.dismiss()
     }
     
