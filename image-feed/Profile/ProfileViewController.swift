@@ -115,7 +115,7 @@ final class ProfileViewController: UIViewController & ProfileViewViewControllerP
         exitButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
     }
     
-    @objc private func exitButtonTapped() {
+    @objc func exitButtonTapped() {
         let alertController = UIAlertController(title: "Пока, пока!", message: "Уверены, что хотите выйти?", preferredStyle: .alert)
         
         let logoutAction = UIAlertAction(title: "Да", style: .default) { [weak self] _ in

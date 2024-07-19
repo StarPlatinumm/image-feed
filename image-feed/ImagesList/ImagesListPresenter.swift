@@ -6,7 +6,7 @@ public protocol ImagesListPresenterProtocol {
     var photos: [Photo] { get }
     func fetchPhotosNextPage()
     func didPhotosUpdate()
-    func getCellHeight(_ tableView: UITableView, _ indexPath: IndexPath) -> CGFloat
+    func getCellHeight(_ tableViewBoundsWidth: CGFloat, _ photoIndex: Int) -> CGFloat
     func imageListCellDidTapLike(_ indexPath: IndexPath)
 }
 
@@ -33,11 +33,11 @@ final class ImagesListPresenter: ImagesListPresenterProtocol {
         }
     }
     
-    func getCellHeight(_ tableView: UITableView, _ indexPath: IndexPath) -> CGFloat {
-        let photo = photos[indexPath.row]
+    func getCellHeight(_ tableViewBoundsWidth: CGFloat, _ photoIndex: Int) -> CGFloat {
+        let photo = photos[photoIndex]
         
         let imageInsets = UIEdgeInsets(top: 4, left: 16, bottom: 4, right: 16)
-        let imageViewWidth = tableView.bounds.width - imageInsets.left - imageInsets.right
+        let imageViewWidth = tableViewBoundsWidth - imageInsets.left - imageInsets.right
         let imageWidth = photo.size.width
         let scale = imageViewWidth / imageWidth
         let cellHeight = photo.size.height * scale + imageInsets.top + imageInsets.bottom

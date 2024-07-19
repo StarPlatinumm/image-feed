@@ -123,7 +123,7 @@ extension ImagesListViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return presenter?.getCellHeight(tableView, indexPath) ?? 0
+        return presenter?.getCellHeight(tableView.bounds.width, indexPath.row) ?? 0
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
