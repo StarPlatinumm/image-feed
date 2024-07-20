@@ -49,6 +49,7 @@ final class ProfileViewController: UIViewController & ProfileViewViewControllerP
         exitButton.setImage(UIImage(named: "profile-exit"), for: .normal)
         exitButton.addTarget(self, action: #selector(exitButtonTapped), for: .touchUpInside)
         exitButton.translatesAutoresizingMaskIntoConstraints = false
+        exitButton.accessibilityIdentifier = "logout button"
         return exitButton
     }()
     
@@ -126,6 +127,10 @@ final class ProfileViewController: UIViewController & ProfileViewViewControllerP
             }
         }
         let cancelAction = UIAlertAction(title: "Нет", style: .cancel, handler: nil)
+        
+        alertController.view.accessibilityIdentifier = "Bye bye!"
+        logoutAction.accessibilityIdentifier = "Yes"
+        cancelAction.accessibilityIdentifier = "No"
         
         alertController.addAction(logoutAction)
         alertController.addAction(cancelAction)
