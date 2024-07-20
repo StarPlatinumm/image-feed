@@ -143,7 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				6FB011722BE7892D0079A71F /* image-feed */,
-				6FF573442C49703100BD42CB /* image-feed-tests */,
+				6FF573442C49703100BD42CB /* unit-tests */,
 				6FB011712BE7892D0079A71F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -247,18 +247,42 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		6FF573442C49703100BD42CB /* image-feed-tests */ = {
+		6FF573442C49703100BD42CB /* unit-tests */ = {
+			isa = PBXGroup;
+			children = (
+				6FF5735C2C4BC6BD00BD42CB /* WebView */,
+				6FF5735D2C4BC6CF00BD42CB /* Profile */,
+				6FF5735E2C4BC6E400BD42CB /* ImagesList */,
+			);
+			path = "unit-tests";
+			sourceTree = "<group>";
+		};
+		6FF5735C2C4BC6BD00BD42CB /* WebView */ = {
 			isa = PBXGroup;
 			children = (
 				6FF573452C49703100BD42CB /* WebViewTests.swift */,
-				6FF573502C497CE500BD42CB /* ProfileViewTests.swift */,
-				6FF573522C497D2A00BD42CB /* ImageListTests.swift */,
 				6FF5734C2C49717600BD42CB /* WebViewPresenterSpy.swift */,
 				6FF5734E2C4972E800BD42CB /* WebViewViewControllerSpy.swift */,
+			);
+			path = WebView;
+			sourceTree = "<group>";
+		};
+		6FF5735D2C4BC6CF00BD42CB /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				6FF573502C497CE500BD42CB /* ProfileViewTests.swift */,
 				6FF573582C4ACE0000BD42CB /* ProfileViewPresenterSpy.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		6FF5735E2C4BC6E400BD42CB /* ImagesList */ = {
+			isa = PBXGroup;
+			children = (
+				6FF573522C497D2A00BD42CB /* ImageListTests.swift */,
 				6FF5735A2C4ADD2400BD42CB /* ImagesListPresenterSpy.swift */,
 			);
-			path = "image-feed-tests";
+			path = ImagesList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
