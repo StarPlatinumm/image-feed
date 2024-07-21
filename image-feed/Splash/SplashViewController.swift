@@ -62,7 +62,7 @@ final class SplashViewController: UIViewController {
             case .success(let data):
                 completion(.success(data))
             case .failure(let error):
-                print(error)
+                completion(.failure(error))
             }
         }
     }

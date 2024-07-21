@@ -127,6 +127,8 @@ extension ImagesListViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let testMode = ProcessInfo.processInfo.arguments.contains("testMode")
+        if testMode { return } // отключаем пагинацию в тестовом режиме
         if indexPath.row + 1 == presenter?.photos.count {
             presenter?.fetchPhotosNextPage()
         }
