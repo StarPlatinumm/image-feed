@@ -1,9 +1,18 @@
 import UIKit
 import Kingfisher
 
-final class ProfileViewController: UIViewController {
-    private let profileService = ProfileService.shared
-    private let profileImageService = ProfileImageService.shared
+public protocol ProfileViewViewControllerProtocol: AnyObject {
+    var presenter: ProfileViewPresenterProtocol? { get set }
+    func addProfileImgeView()
+    func addUserNameLabel(_ text: String)
+    func addUserIdLabel(_ text: String)
+    func addUserTextLabel(_ text: String)
+    func addExitButton()
+    func updateAvatar(imageUrl: URL)
+}
+
+final class ProfileViewController: UIViewController & ProfileViewViewControllerProtocol {
+    var presenter: ProfileViewPresenterProtocol?
     
     private var profileImageView: UIImageView = {
         let imageView = UIImageView()
@@ -40,6 +49,7 @@ final class ProfileViewController: UIViewController {
         exitButton.setImage(UIImage(named: "profile-exit"), for: .normal)
         exitButton.addTarget(self, action: #selector(exitButtonTapped), for: .touchUpInside)
         exitButton.translatesAutoresizingMaskIntoConstraints = false
+        exitButton.accessibilityIdentifier = "logout button"
         return exitButton
     }()
     
@@ -49,17 +59,7 @@ final class ProfileViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.ypBlack
         
-        // получаем данные пользователя
-        guard let profileData = profileService.profile else {
-            return
-        }
-        
-        // рисуем интерфейс
-        addProfileImgeView()
-        addUserNameLabel(profileData.name)
-        addUserIdLabel(profileData.loginName)
-        addUserTextLabel(profileData.bio)
-        addExitButton()
+        presenter?.viewDidLoad()
         
         // получаем фото пользователя
         profileImageServiceObserver = NotificationCenter.default.addObserver(
@@ -68,24 +68,17 @@ final class ProfileViewController: UIViewController {
             queue: .main
         ) { [weak self] _ in
             guard let self = self else { return }
-            self.updateAvatar()
+            self.presenter?.didUpdateAvatar()
         }
-        updateAvatar()
     }
     
-    private func updateAvatar() {
-        guard
-            let profileImageURL = profileImageService.avatarURL,
-            let imageUrl = URL(string: profileImageURL)
-        else { return }
-        // Kingfisher
+    func updateAvatar(imageUrl: URL) {
         profileImageView.kf.indicatorType = .activity
         profileImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "profile-placeholder"))
     }
     
-    private func addProfileImgeView() {
+    func addProfileImgeView() {
         view.addSubview(profileImageView)
-        
         profileImageView.layer.cornerRadius = 35
         profileImageView.layer.masksToBounds = true
         profileImageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
@@ -94,50 +87,50 @@ final class ProfileViewController: UIViewController {
         profileImageView.heightAnchor.constraint(equalToConstant: 70).isActive = true
     }
     
-    private func addUserNameLabel(_ text: String) {
+    func addUserNameLabel(_ text: String) {
         view.addSubview(nameLabel)
-        
         nameLabel.text = text
         nameLabel.leadingAnchor.constraint(equalTo: profileImageView.leadingAnchor).isActive = true
         nameLabel.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 8).isActive = true
     }
     
-    private func addUserIdLabel(_ text: String) {
+    func addUserIdLabel(_ text: String) {
         view.addSubview(idLabel)
-        
         idLabel.text = text
         idLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor).isActive = true
         idLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 8).isActive = true
     }
     
-    private func addUserTextLabel(_ text: String) {
+    func addUserTextLabel(_ text: String) {
         view.addSubview(textLabel)
-        
         textLabel.text = text
         textLabel.leadingAnchor.constraint(equalTo: idLabel.leadingAnchor).isActive = true
         textLabel.topAnchor.constraint(equalTo: idLabel.bottomAnchor, constant: 8).isActive = true
     }
     
-    private func addExitButton() {
+    func addExitButton() {
         view.addSubview(exitButton)
-        
         exitButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
         exitButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 45).isActive = true
         exitButton.widthAnchor.constraint(equalToConstant: 44).isActive = true
         exitButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
     }
     
-    @objc private func exitButtonTapped() {
+    @objc func exitButtonTapped() {
         let alertController = UIAlertController(title: "Пока, пока!", message: "Уверены, что хотите выйти?", preferredStyle: .alert)
         
-        let logoutAction = UIAlertAction(title: "Да", style: .default) { _ in
-            ProfileLogoutService.shared.logout()
+        let logoutAction = UIAlertAction(title: "Да", style: .default) { [weak self] _ in
+            self?.presenter?.logout()
             // Возвращаемся на SplashViewController
             if let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
                 window.rootViewController = SplashViewController()
             }
         }
         let cancelAction = UIAlertAction(title: "Нет", style: .cancel, handler: nil)
+        
+        alertController.view.accessibilityIdentifier = "Bye bye!"
+        logoutAction.accessibilityIdentifier = "Yes"
+        cancelAction.accessibilityIdentifier = "No"
         
         alertController.addAction(logoutAction)
         alertController.addAction(cancelAction)
